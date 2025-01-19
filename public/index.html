@@ -8,25 +8,34 @@
 </head>
 <body>
   <div class="container">
-    <div class="report-header">
-      <p>Report as of <span id="reportDate" class="date-link"></span></p>
-      <div class="summary">
-        <p>GA Registered: <span id="registeredTotal">0</span></p>
-        <p>Unregistered: <span id="unregisteredTotal">0</span></p>
-      </div>
+    <div id="initial-message" class="initial-message">
+      <p>Please select a DSR to begin tracking</p>
     </div>
 
-    <div id="entries-list" class="entries-list"></div>
+    <div id="tracker-content" class="tracker-content hidden">
+      <div class="report-header">
+        <p>Report as of <span id="reportDate" class="date-link"></span></p>
+        <div class="summary">
+          <p>GA Registered: <span id="registeredTotal">0</span></p>
+          <p>Unregistered: <span id="unregisteredTotal">0</span></p>
+        </div>
+      </div>
+
+      <div id="entries-list" class="entries-list"></div>
+    </div>
 
     <div class="input-section">
       <div class="dsr-controls">
-        <select id="dsrSelect" class="dsr-select"></select>
+        <div class="dsr-select-group">
+          <select id="dsrSelect" class="dsr-select"></select>
+          <button id="deleteDsrButton" class="delete-dsr-btn hidden" title="Delete selected DSR">×</button>
+        </div>
         <div class="new-dsr-group">
           <input type="text" id="newDsrInput" placeholder="New DSR name" class="dsr-input">
           <button id="addDsrButton" class="add-dsr-btn">Add DSR</button>
         </div>
       </div>
-      <div class="input-group">
+      <div id="input-controls" class="input-group hidden">
         <input type="text" id="numberInput" placeholder="Enter new number" class="number-input">
         <input type="number" id="addsInput" placeholder="Adds" class="adds-input">
         <button id="addButton" class="add-btn">Add</button>
@@ -42,6 +51,18 @@
       <div class="modal-buttons">
         <button id="confirmUpdate">OK</button>
         <button id="cancelUpdate">Cancel</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal for updating number -->
+  <div id="numberModal" class="modal">
+    <div class="modal-content">
+      <h2>Update Number</h2>
+      <input type="text" id="updateNumberInput" placeholder="Enter number">
+      <div class="modal-buttons">
+        <button id="confirmNumberUpdate">OK</button>
+        <button id="cancelNumberUpdate">Cancel</button>
       </div>
     </div>
   </div>

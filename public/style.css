@@ -15,6 +15,23 @@ body {
   margin: 0 auto;
 }
 
+.initial-message {
+  text-align: center;
+  padding: 2rem;
+  background-color: #f3f4f6;
+  border-radius: 0.5rem;
+  margin: 2rem 0;
+}
+
+.initial-message p {
+  color: #6b7280;
+  font-size: 1.1rem;
+}
+
+.hidden {
+  display: none !important;
+}
+
 .report-header {
   margin-bottom: 1rem;
   font-size: 1rem;
@@ -35,7 +52,7 @@ body {
 
 .entries-list {
   margin: 1rem 0;
-  margin-bottom: 150px; /* Add more space for the DSR controls */
+  margin-bottom: 150px;
 }
 
 .entry {
@@ -46,6 +63,11 @@ body {
   font-size: 0.9rem;
   width: 170px;
   border: 1px solid #ccc;
+  transition: background-color 0.2s;
+}
+
+.entry:hover {
+  background-color: #f5f5f5;
 }
 
 .entry-blanks,
@@ -59,6 +81,18 @@ body {
   height: 0.75rem;
   border: 1px solid rgb(6, 6, 8);
   border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  font-size: 0.8rem;
+  color: transparent;
+  transition: all 0.2s;
+}
+
+.entry:hover .entry-circle {
+  border-color: #ff4444;
+  color: #ff4444;
 }
 
 .entry-text {
@@ -67,14 +101,14 @@ body {
   justify-content: space-between;
 }
 
+.entry-number,
 .entry-adds {
-  color: rgb(4, 4, 5);
-  margin-left: auto;
   cursor: pointer;
 }
 
+.entry-number:hover,
 .entry-adds:hover {
-  color: black;
+  color: #0066cc;
 }
 
 .input-section {
@@ -96,6 +130,13 @@ body {
   align-items: center;
 }
 
+.dsr-select-group {
+  flex: 1;
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+}
+
 .dsr-select {
   flex: 1;
   padding: 0.5rem;
@@ -104,6 +145,22 @@ body {
   border-radius: 0.25rem;
   color: white;
   font-size: 0.9rem;
+}
+
+.delete-dsr-btn {
+  padding: 0.25rem 0.5rem;
+  background-color: rgb(185, 28, 28);
+  color: white;
+  border: none;
+  border-radius: 0.25rem;
+  cursor: pointer;
+  font-size: 1rem;
+  line-height: 1;
+  transition: background-color 0.2s;
+}
+
+.delete-dsr-btn:hover {
+  background-color: rgb(220, 38, 38);
 }
 
 .new-dsr-group {
@@ -130,6 +187,11 @@ body {
   border-radius: 0.25rem;
   cursor: pointer;
   font-size: 0.9rem;
+  transition: background-color 0.2s;
+}
+
+.add-dsr-btn:hover {
+  background-color: rgb(29, 78, 216);
 }
 
 .input-group {
@@ -142,6 +204,7 @@ body {
 .number-input,
 .adds-input,
 #updateAddsInput,
+#updateNumberInput,
 #dateInput {
   padding: 0.5rem;
   background-color: rgb(55, 65, 81);
@@ -172,6 +235,11 @@ body {
   border: none;
   border-radius: 0.25rem;
   cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.add-btn:hover {
+  background-color: rgb(29, 78, 216);
 }
 
 .modal {
@@ -185,10 +253,13 @@ body {
   align-items: center;
   justify-content: center;
   color: white;
+  opacity: 0;
+  transition: opacity 0.2s;
 }
 
 .modal.show {
   display: flex;
+  opacity: 1;
 }
 
 .modal-content {
@@ -197,6 +268,12 @@ body {
   border-radius: 0.25rem;
   width: 90%;
   max-width: 300px;
+  transform: scale(0.9);
+  transition: transform 0.2s;
+}
+
+.modal.show .modal-content {
+  transform: scale(1);
 }
 
 .modal-content h2 {
@@ -205,6 +282,7 @@ body {
 }
 
 #updateAddsInput,
+#updateNumberInput,
 #dateInput {
   width: 100%;
   margin-bottom: 1rem;
@@ -222,16 +300,41 @@ body {
   border-radius: 0.25rem;
   cursor: pointer;
   font-size: 0.9rem;
+  transition: background-color 0.2s;
 }
 
 #confirmUpdate,
-#confirmDate {
+#confirmDate,
+#confirmNumberUpdate {
   background-color: rgb(37, 99, 235);
   color: white;
 }
 
+#confirmUpdate:hover,
+#confirmDate:hover,
+#confirmNumberUpdate:hover {
+  background-color: rgb(29, 78, 216);
+}
+
 #cancelUpdate,
-#cancelDate {
+#cancelDate,
+#cancelNumberUpdate {
   background-color: rgb(55, 65, 81);
   color: white;
+}
+
+#cancelUpdate:hover,
+#cancelDate:hover,
+#cancelNumberUpdate:hover {
+  background-color: rgb(75, 85, 99);
+}
+
+@media (max-width: 500px) {
+ 
+  .dsr-input {
+    width: 60%;
+  }
+  .add-dsr-btn {
+    width: 40%;
+  }
 }
