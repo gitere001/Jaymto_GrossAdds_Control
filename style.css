@@ -1,0 +1,237 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  min-height: 100vh;
+  padding: 1rem;
+}
+
+.container {
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.report-header {
+  margin-bottom: 1rem;
+  font-size: 1rem;
+  font-weight: bolder;
+}
+
+.date-link {
+  cursor: pointer;
+  color: black;
+  text-decoration: underline;
+}
+
+.summary {
+  margin-top: 0.5rem;
+  display: flex;
+  gap: 1rem;
+}
+
+.entries-list {
+  margin: 1rem 0;
+  margin-bottom: 150px; /* Add more space for the DSR controls */
+}
+
+.entry {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem;
+  font-size: 0.9rem;
+  width: 170px;
+  border: 1px solid #ccc;
+}
+
+.entry-blanks,
+.entry-blanks .entry-number,
+.entry-blanks .entry-adds {
+  color: brown;
+}
+
+.entry-circle {
+  width: 0.75rem;
+  height: 0.75rem;
+  border: 1px solid rgb(6, 6, 8);
+  border-radius: 50%;
+}
+
+.entry-text {
+  flex: 1;
+  display: flex;
+  justify-content: space-between;
+}
+
+.entry-adds {
+  color: rgb(4, 4, 5);
+  margin-left: auto;
+  cursor: pointer;
+}
+
+.entry-adds:hover {
+  color: black;
+}
+
+.input-section {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background-color: rgb(31, 41, 55);
+  padding: 1rem;
+  color: white;
+}
+
+.dsr-controls {
+  max-width: 600px;
+  margin: 0 auto;
+  margin-bottom: 1rem;
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+}
+
+.dsr-select {
+  flex: 1;
+  padding: 0.5rem;
+  background-color: rgb(55, 65, 81);
+  border: none;
+  border-radius: 0.25rem;
+  color: white;
+  font-size: 0.9rem;
+}
+
+.new-dsr-group {
+  display: flex;
+  gap: 0.5rem;
+  flex: 2;
+}
+
+.dsr-input {
+  flex: 1;
+  padding: 0.5rem;
+  background-color: rgb(55, 65, 81);
+  border: none;
+  border-radius: 0.25rem;
+  color: white;
+  font-size: 0.9rem;
+}
+
+.add-dsr-btn {
+  padding: 0.5rem 1rem;
+  background-color: rgb(37, 99, 235);
+  color: white;
+  border: none;
+  border-radius: 0.25rem;
+  cursor: pointer;
+  font-size: 0.9rem;
+}
+
+.input-group {
+  max-width: 600px;
+  margin: 0 auto;
+  display: flex;
+  gap: 0.5rem;
+}
+
+.number-input,
+.adds-input,
+#updateAddsInput,
+#dateInput {
+  padding: 0.5rem;
+  background-color: rgb(55, 65, 81);
+  border: none;
+  border-radius: 0.25rem;
+  color: white;
+  font-size: 0.9rem;
+}
+
+.number-input {
+  flex: 1;
+}
+
+.adds-input {
+  width: 5rem;
+}
+
+.number-input::placeholder,
+.adds-input::placeholder,
+.dsr-input::placeholder {
+  color: rgb(156, 163, 175);
+}
+
+.add-btn {
+  padding: 0.5rem 1rem;
+  background-color: rgb(37, 99, 235);
+  color: white;
+  border: none;
+  border-radius: 0.25rem;
+  cursor: pointer;
+}
+
+.modal {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  align-items: center;
+  justify-content: center;
+  color: white;
+}
+
+.modal.show {
+  display: flex;
+}
+
+.modal-content {
+  background-color: rgb(31, 41, 55);
+  padding: 1rem;
+  border-radius: 0.25rem;
+  width: 90%;
+  max-width: 300px;
+}
+
+.modal-content h2 {
+  margin-bottom: 1rem;
+  font-size: 1rem;
+}
+
+#updateAddsInput,
+#dateInput {
+  width: 100%;
+  margin-bottom: 1rem;
+}
+
+.modal-buttons {
+  display: flex;
+  gap: 0.5rem;
+  justify-content: flex-end;
+}
+
+.modal-buttons button {
+  padding: 0.5rem 1rem;
+  border: none;
+  border-radius: 0.25rem;
+  cursor: pointer;
+  font-size: 0.9rem;
+}
+
+#confirmUpdate,
+#confirmDate {
+  background-color: rgb(37, 99, 235);
+  color: white;
+}
+
+#cancelUpdate,
+#cancelDate {
+  background-color: rgb(55, 65, 81);
+  color: white;
+}

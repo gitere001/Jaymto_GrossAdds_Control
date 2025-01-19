@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Gross Adds Tracker</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="container">
+    <div class="report-header">
+      <p>Report as of <span id="reportDate" class="date-link"></span></p>
+      <div class="summary">
+        <p>GA Registered: <span id="registeredTotal">0</span></p>
+        <p>Unregistered: <span id="unregisteredTotal">0</span></p>
+      </div>
+    </div>
+
+    <div id="entries-list" class="entries-list"></div>
+
+    <div class="input-section">
+      <div class="dsr-controls">
+        <select id="dsrSelect" class="dsr-select"></select>
+        <div class="new-dsr-group">
+          <input type="text" id="newDsrInput" placeholder="New DSR name" class="dsr-input">
+          <button id="addDsrButton" class="add-dsr-btn">Add DSR</button>
+        </div>
+      </div>
+      <div class="input-group">
+        <input type="text" id="numberInput" placeholder="Enter new number" class="number-input">
+        <input type="number" id="addsInput" placeholder="Adds" class="adds-input">
+        <button id="addButton" class="add-btn">Add</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal for updating adds -->
+  <div id="updateModal" class="modal">
+    <div class="modal-content">
+      <h2>Update Adds</h2>
+      <input type="number" id="updateAddsInput" placeholder="Enter adds">
+      <div class="modal-buttons">
+        <button id="confirmUpdate">OK</button>
+        <button id="cancelUpdate">Cancel</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal for updating date -->
+  <div id="dateModal" class="modal">
+    <div class="modal-content">
+      <h2>Update Date</h2>
+      <input type="date" id="dateInput">
+      <div class="modal-buttons">
+        <button id="confirmDate">OK</button>
+        <button id="cancelDate">Cancel</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
