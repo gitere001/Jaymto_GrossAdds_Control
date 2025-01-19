@@ -330,11 +330,25 @@ body {
 }
 
 @media (max-width: 500px) {
- 
+
   .dsr-input {
     width: 60%;
   }
   .add-dsr-btn {
     width: 40%;
+  }
+  .number-input {
+    border: 2px solid red;
+    flex-grow: 0;
+    width: 130px;
+
+  }
+  .adds-input{
+    flex-grow: 1;
+
+  }
+  .add-btn {
+    flex-grow: 1;
+
   }
 }
