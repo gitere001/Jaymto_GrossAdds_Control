@@ -3,7 +3,10 @@ let currentDsr = null;
 let dsrs = [];
 let entries = [];
 let currentUpdateId = null;
-const API_URL = "http://localhost:3000/api";
+const API_URL = window.location.hostname === 'localhost'
+  ? 'http://localhost:3000/api'
+  : 'https://jaymto-gross-adds-control.vercel.app/api';
+console.log(API_URL);
 
 // DOM Elements
 const initialMessage = document.getElementById("initial-message");
