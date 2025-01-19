@@ -338,7 +338,7 @@ body {
     width: 40%;
   }
   .number-input {
-    border: 2px solid red;
+    
     flex-grow: 0;
     width: 130px;
 
