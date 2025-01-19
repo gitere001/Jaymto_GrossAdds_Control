@@ -3,10 +3,6 @@ let currentDsr = null;
 let dsrs = [];
 let entries = [];
 let currentUpdateId = null;
-const API_URL = window.location.hostname === 'localhost'
-  ? 'http://localhost:3000/api'
-  : 'https://jaymto-gross-adds-control.vercel.app/api';
-console.log(API_URL);
 
 // DOM Elements
 const initialMessage = document.getElementById("initial-message");
@@ -69,7 +65,7 @@ function updateUIVisibility() {
 // DSR Functions
 async function loadDsrs() {
     try {
-        const response = await fetch(`${API_URL}/dsrs`);
+        const response = await fetch('/api/dsrs');
         dsrs = await response.json();
         updateDsrSelect();
     } catch (error) {
@@ -99,7 +95,7 @@ async function handleAddDsr() {
     if (!name) return;
 
     try {
-        const response = await fetch(`${API_URL}/dsrs`, {
+        const response = await fetch('/api/dsrs', {
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify({
@@ -122,7 +118,7 @@ async function handleDeleteDsr() {
     }
 
     try {
-        await fetch(`${API_URL}/dsrs/${currentDsr._id}`, { method: "DELETE" });
+        await fetch(`/api/dsrs/${currentDsr._id}`, { method: "DELETE" });
         dsrs = dsrs.filter((dsr) => dsr._id !== currentDsr._id);
         currentDsr = null;
         updateDsrSelect();
@@ -135,7 +131,7 @@ async function handleDeleteDsr() {
 // Entry Functions
 async function loadEntries() {
     try {
-        const response = await fetch(`${API_URL}/dsrs/${currentDsr._id}/entries`);
+        const response = await fetch(`/api/dsrs/${currentDsr._id}/entries`);
         entries = await response.json();
 
         const blanksEntry = entries.find((entry) => entry.number === "Blanks");
@@ -152,7 +148,7 @@ async function loadEntries() {
 
 async function addBlanksEntry() {
     try {
-        const response = await fetch(`${API_URL}/entries`, {
+        const response = await fetch('/api/entries', {
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify({
@@ -219,7 +215,7 @@ async function handleAddEntry() {
     if (!number || isNaN(adds)) return;
 
     try {
-        const response = await fetch(`${API_URL}/entries`, {
+        const response = await fetch('/api/entries', {
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify({
@@ -245,7 +241,7 @@ async function deleteEntry(id) {
     }
 
     try {
-        await fetch(`${API_URL}/entries/${id}`, { method: "DELETE" });
+        await fetch(`/api/entries/${id}`, { method: "DELETE" });
         entries = entries.filter((entry) => entry._id !== id);
         renderEntries();
         updateTotals();
@@ -285,7 +281,7 @@ async function handleUpdateAdds() {
     if (isNaN(adds)) return;
 
     try {
-        await fetch(`${API_URL}/entries/${currentUpdateId}/adds`, {
+        await fetch(`/api/entries/${currentUpdateId}/adds`, {
             method: "PUT",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify({ adds }),
@@ -309,7 +305,7 @@ async function handleUpdateNumber() {
     if (!number) return;
 
     try {
-        await fetch(`${API_URL}/entries/${currentUpdateId}/number`, {
+        await fetch(`/api/entries/${currentUpdateId}/number`, {
             method: "PUT",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify({ number }),
@@ -331,7 +327,7 @@ async function updateReportDate() {
     const newDate = dateInput.value;
 
     try {
-        await fetch(`${API_URL}/dsrs/${currentDsr._id}/report-date`, {
+        await fetch(`/api/dsrs/${currentDsr._id}/report-date`, {
             method: "PUT",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify({ report_date: newDate }),

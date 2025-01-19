@@ -2,6 +2,7 @@ const express = require('express');
 const mongoose = require('mongoose');
 const cors = require('cors');
 require('dotenv').config(); // Load environment variables from a .env file
+const path = require('path');
 
 const app = express();
 app.use(cors());
@@ -30,7 +31,8 @@ const DSR = mongoose.model('DSR', dsrSchema);
 const Entry = mongoose.model('Entry', entrySchema);
 
 // API Endpoints
-app.use(express.static('public'));
+app.use(express.static(path.resolve(__dirname, 'public')));
+
 
 // Get all DSRs
 app.get('/api/dsrs', async (req, res) => {
