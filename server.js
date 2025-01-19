@@ -30,13 +30,7 @@ const DSR = mongoose.model('DSR', dsrSchema);
 const Entry = mongoose.model('Entry', entrySchema);
 
 // API Endpoints
-// Serve static files from the 'public' directory
-app.use(express.static(path.join(__dirname, 'public')));
-
-// Fallback to serve index.html for all non-API routes
-app.get('*', (req, res) => {
-  res.sendFile(path.join(__dirname, 'public', 'index.html'));
-});
+app.use(express.static('public'));
 
 // Get all DSRs
 app.get('/api/dsrs', async (req, res) => {
