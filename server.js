@@ -143,15 +143,27 @@ app.get('/api/dsrs/:id/report-date', async (req, res) => {
 
 // Update report date for a specific DSR
 app.put('/api/dsrs/:id/report-date', async (req, res) => {
-  const { date } = req.body;
-
   try {
-    await DSR.findByIdAndUpdate(req.params.id, { report_date: date });
-    res.json({ message: 'Report date updated' });
-  } catch (err) {
-    res.status(500).json({ error: err.message });
+    const { report_date } = req.body;
+
+    const updatedDsr = await DSR.findByIdAndUpdate(
+      req.params.id,
+      { report_date },
+      { new: true } // Return the updated document
+    );
+
+    if (!updatedDsr) {
+      return res.status(404).json({ error: 'DSR not found' });
+    }
+
+    
+    res.json(updatedDsr);
+  } catch (error) {
+    console.error("Error updating report date:", error); // Log the error
+    res.status(500).json({ error: error.message });
   }
 });
+
 
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, () => {
